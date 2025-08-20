@@ -1,4 +1,4 @@
-import { Component, HostBinding, HostListener, input, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, HostBinding, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -18,7 +18,10 @@ export class ControlComponent {
 // @HostListener('click')  onClick(){ console.log('clicked!');  }
   label = input.required<string>();
 
-  onClick1(){
-    console.log('clicked');  }
+  private el = inject(ElementRef);    //ElementRef provide reference to some element that is redenred on the page
 
+  onClick1(){
+    console.log('clicked');  
+    console.log(this.el);
+  }
 }
