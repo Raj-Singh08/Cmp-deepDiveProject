@@ -1,4 +1,6 @@
 <span>
     <ng-content/>
 </span>
-    <ng-content select="icon"/>    <!--Supporting content Projection with Multiple Slots-->
+    <ng-content select="icon"> 
+        ->      <!--Fallback-->
+    </ng-content>   <!--Supporting content Projection with Multiple Slots-->

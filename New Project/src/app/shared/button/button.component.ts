@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'button[appButton]',  //Any button element in project that also has appButton Attribute should be controled by this comp.
