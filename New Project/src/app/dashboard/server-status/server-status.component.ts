@@ -12,8 +12,6 @@ export class ServerStatusComponent implements  OnInit{
 
   constructor(){  }
 
-
-  
   //Runs when the componenent loads
   ngOnInit(){
     setInterval(()=>{
