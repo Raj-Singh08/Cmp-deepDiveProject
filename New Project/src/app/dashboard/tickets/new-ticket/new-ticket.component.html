@@ -1,6 +1,6 @@
-<form>
+<form (ngSubmit)="onSubmit(titleInput)">
     <app-control class="control" label="Title">
-        <input type="text" name="title" id="title" ngProjectAs="input" />
+        <input type="text" name="title" id="title" ngProjectAs="input" #titleInput/>
     </app-control>  
     <app-control  label="Request">
         <textarea  name="request" id="request" ngProjectAs="textarea" ></textarea>
