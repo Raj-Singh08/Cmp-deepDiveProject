@@ -14,7 +14,9 @@ export class NewTicketComponent {
 
   // @ViewChild('form') form?:ElementRef<HTMLFormElement>; //@ViewChildern can be used to select multiple elements
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form');  //using signal by viewChild method
-
+//   @ViewChild
+// Where it looks: Inside the view template (HTML) of the current component.
+// Use case: To access a child component, directive, or DOM element that is declared in the same component’s template.
   
 
   onSubmit(title:string,ticketText:string){

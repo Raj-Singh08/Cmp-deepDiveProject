@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
+import { Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -20,8 +20,18 @@ export class ControlComponent {
 
   private el = inject(ElementRef);    //ElementRef provide reference to some element that is redenred on the page
 
+  //@ContentChild
+  // Where it looks: Inside the projected content that is passed between <ng-content> tags.
+  // Use case: To access a component, directive, or DOM element that the parent projects
+  //  into the child using content projection (<ng-content>).
+  // @ContentChild('input') private control?:ElementRef<HTMLInputElement|HTMLTextAreaElement>;
+  private control = contentChild.required<ElementRef<HTMLInputElement|HTMLTextAreaElement>>('input');
+
+
   onClick1(){
     console.log('clicked');  
     console.log(this.el);
+    // console.log(this.control);
+    console.log(this.control());
   }
 }
