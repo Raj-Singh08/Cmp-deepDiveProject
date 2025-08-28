@@ -1,9 +1,9 @@
-<form (ngSubmit)="onSubmit(titleInput)">
+<form (ngSubmit)="onSubmit(titleInput.value,textInput.valu)">      <!--Rather than passing the whole input element we are passing the value-->
     <app-control class="control" label="Title">
-        <input type="text" name="title" id="title" ngProjectAs="input" #titleInput/>
+        <input type="text" name="title" id="title" ngProjectAs="input" #titleInput/>        <!--Template Variable(#title)-->
     </app-control>  
     <app-control  label="Request">
-        <textarea  name="request" id="request" ngProjectAs="textarea" ></textarea>
+        <textarea  name="request" id="request" ngProjectAs="textarea" #textInput></textarea>
     </app-control>
     <!-- <p>
         <label for="title">Title</label>
