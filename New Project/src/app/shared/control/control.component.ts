@@ -1,4 +1,4 @@
-import { Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
+import { AfterContentInit, afterNextRender, afterRender, Component, contentChild, ContentChild, ElementRef, HostBinding, HostListener, inject, input, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-control',
@@ -13,7 +13,7 @@ import { Component, contentChild, ContentChild, ElementRef, HostBinding, HostLis
     '(click)': 'onClick1()'  //Event Binding
   }
 })
-export class ControlComponent {
+export class ControlComponent implements AfterContentInit{
 //  @HostBinding('class') className = 'control';
 // @HostListener('click')  onClick(){ console.log('clicked!');  }
   label = input.required<string>();
@@ -27,6 +27,26 @@ export class ControlComponent {
   // @ContentChild('input') private control?:ElementRef<HTMLInputElement|HTMLTextAreaElement>;
   private control = contentChild.required<ElementRef<HTMLInputElement|HTMLTextAreaElement>>('input');
 
+  constructor(){
+    // official lifecycle hooks like ngAfterViewInit, ngAfterContentInit, etc. But terms like afterRender and 
+    // afterNextRender are not Angular lifecycle hooks — they actually come from Angular’s new rendering APIs introduced
+    //  in Angular 17
+    afterRender(()=>{
+      console.log("AFTER Render");  //Renders after anything chnages in enitire applicaition
+    });
+
+    afterNextRender(()=>{
+      console.log("AFter Next Render")    //After the next change in entire application
+    });
+//     afterNextRender()
+// Runs only once, after the next render cycle.
+// It won’t keep firing like afterRender.
+// Useful for one-time DOM-related work that needs to happen only after the first render.
+  }
+
+  ngAfterContentInit() {
+      //...
+  }
 
   onClick1(){
     console.log('clicked');  
